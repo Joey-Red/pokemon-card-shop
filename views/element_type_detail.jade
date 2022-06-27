@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1 Element Type: #{element_type.name}
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Books
+    
+    dl
+    each card in element_type_cards
+      dt 
+        a(href=card.url) #{card.title}
+      dd #{card.summary}
+
+    else
+      p This element type has no cards.
+      
+  hr
+  p
+    a(href=element_type.url+'/delete') Delete element_type
+  p
+    a(href=element_type.url+'/update') Update element_type

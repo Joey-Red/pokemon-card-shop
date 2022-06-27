@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1 Title: #{card.title}
+  
+  p #[strong Summary:] #{card.summary}
+  p #[strong Genre:] 
+    each val, index in card.genre
+      a(href=val.url) #{val.name}
+      if index < card.genre.length - 1
+        |, 
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Copies
+    
+    each val in card_instances
+      hr
+      if val.status=='Available'
+        p.text-success #{val.status}
+      else if val.status=='Maintenance'
+        p.text-danger #{val.status}
+      else
+        p.text-warning #{val.status} 
+      if val.status!='Available'
+      p #[strong Id:] 
+        a(href=val.url) #{val._id}
+ 
+    else
+      p There are no copies of this card in the library.
+      
+  hr
+  p
+    a(href=card.url+'/delete') Delete Card
+  p
+    a(href=card.url+'/update') Update Card

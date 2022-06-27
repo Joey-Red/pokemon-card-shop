@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='card') Card:
+      select#card.form-control(type='select', placeholder='Select card' name='card' required='true' )
+        - card_list.sort(function(a, b) {let textA = a.title.toUpperCase(); let textB = b.title.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for card in card_list
+          option(value=card._id, selected=(selected_card==card._id.toString() ? 'selected' : false) ) #{card.title}
+        
+    div.form-group
+      label(for='status') Status:
+      select#status.form-control(type='select', placeholder='Select status' name='status' required='true' )
+        option(value='Maintenance' selected=(undefined===cardinstance || cardinstance.status!='Maintenance' ? false:'selected')) Maintenance
+        option(value='Available' selected=(undefined===cardinstance || cardinstance.status!='Available' ? false:'selected')) Available
+        option(value='Loaned' selected=(undefined===cardinstance || cardinstance.status!='Loaned' ? false:'selected')) Loaned
+        option(value='Reserved' selected=(undefined===cardinstance || cardinstance.status!='Reserved' ? false:'selected')) Reserved
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

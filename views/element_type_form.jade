@@ -1,0 +1,18 @@
+
+
+extends layout
+
+block content
+
+  h1 #{title}
+          
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Element Type:
+      input#name.form-control(type='text', placeholder='Electric, Ground, Fighting etc.' name='name' required='true' value=(undefined===element_type ? '' : element_type.name) )
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

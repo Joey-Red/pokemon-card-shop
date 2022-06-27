@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+  h1 ID: #{cardinstance._id}
+  
+  p #[strong Title:] 
+    a(href=cardinstance.card.url) #{cardinstance.card.title}
+
+  p #[strong Status:] 
+    if cardinstance.status=='Available'
+      span.text-success #{cardinstance.status}
+    else if cardinstance.status=='Maintenance'
+      span.text-danger #{cardinstance.status}
+    else
+      span.text-warning #{cardinstance.status} 
+      
+
+  hr
+  p
+    a(href=cardinstance.url+'/delete') Delete CardInstance
+  p
+    a(href=cardinstance.url+'/update') Update CardInstance
