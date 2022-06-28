@@ -14,7 +14,7 @@ exports.element_type_list = function (req, res, next) {
       }
       // Successful, so render.
       res.render("element_type_list", {
-        title: "Element_Type List",
+        title: "Element Type List",
         list_element_types: list_element_types,
       });
     });
@@ -38,13 +38,13 @@ exports.element_type_detail = function (req, res, next) {
       }
       if (results.element_type == null) {
         // No results.
-        var err = new Error("Element_Type not found");
+        var err = new Error("Element Type not found");
         err.status = 404;
         return next(err);
       }
       // Successful, so render.
       res.render("element_type_detail", {
-        title: "Element_Type Detail",
+        title: "Element Type Detail",
         element_type: results.element_type,
         element_type_cards: results.element_type_cards,
       });
@@ -54,7 +54,7 @@ exports.element_type_detail = function (req, res, next) {
 
 // Display Element_Type create form on GET.
 exports.element_type_create_get = function (req, res, next) {
-  res.render("element_type_form", { title: "Create Element_Type" });
+  res.render("element_type_form", { title: "Create Element Type" });
 };
 
 // Handle Element_Type create on POST.
@@ -76,7 +76,7 @@ exports.element_type_create_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values/error messages.
       res.render("element_type_form", {
-        title: "Create Element_Type",
+        title: "Create Element Type",
         element_type: element_type,
         errors: errors.array(),
       });
@@ -126,11 +126,11 @@ exports.element_type_delete_get = function (req, res, next) {
       }
       if (results.element_type == null) {
         // No results.
-        res.redirect("/catalog/element_types");
+        res.redirect("/catalog/elementtypes");
       }
       // Successful, so render.
       res.render("element_type_delete", {
-        title: "Delete Element_Type",
+        title: "Delete Element Type",
         element_type: results.element_type,
         element_type_cards: results.element_type_cards,
       });
@@ -157,7 +157,7 @@ exports.element_type_delete_post = function (req, res, next) {
       if (results.element_type_cards.length > 0) {
         // Element_Type has cards. Render in same way as for GET route.
         res.render("element_type_delete", {
-          title: "Delete Element_Type",
+          title: "Delete Element Type",
           element_type: results.element_type,
           element_type_cards: results.element_type_cards,
         });
@@ -193,7 +193,7 @@ exports.element_type_update_get = function (req, res, next) {
     }
     // Success.
     res.render("element_type_form", {
-      title: "Update Element_Type",
+      title: "Update Element Type",
       element_type: element_type,
     });
   });
@@ -202,7 +202,7 @@ exports.element_type_update_get = function (req, res, next) {
 // Handle Element_Type update on POST.
 exports.element_type_update_post = [
   // Validate and sanitze the name field.
-  body("name", "Element_Type name must contain at least 3 characters")
+  body("name", "Element Type name must contain at least 3 characters")
     .trim()
     .isLength({ min: 3 })
     .escape(),
@@ -221,7 +221,7 @@ exports.element_type_update_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values and error messages.
       res.render("element_type_form", {
-        title: "Update Element_Type",
+        title: "Update Element Type",
         element_type: element_type,
         errors: errors.array(),
       });

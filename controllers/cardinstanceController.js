@@ -50,7 +50,7 @@ exports.cardinstance_create_get = function (req, res, next) {
     }
     // Successful, so render.
     res.render("cardinstance_form", {
-      title: "Create CardInstance",
+      title: "Create Card Instance",
       card_list: cards,
     });
   });
@@ -72,11 +72,11 @@ exports.cardinstance_create_post = [
   (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
-
     // Create a CardInstance object with escaped and trimmed data.
     var cardinstance = new CardInstance({
       card: req.body.card,
       status: req.body.status,
+      // price: req.body.price,
     });
 
     if (!errors.isEmpty()) {
@@ -87,7 +87,7 @@ exports.cardinstance_create_post = [
         }
         // Successful, so render.
         res.render("cardinstance_form", {
-          title: "Create CardInstance",
+          title: "Create Card Instance",
           card_list: cards,
           selected_card: cardinstance.card._id,
           errors: errors.array(),
@@ -122,7 +122,7 @@ exports.cardinstance_delete_get = function (req, res, next) {
       }
       // Successful, so render.
       res.render("cardinstance_delete", {
-        title: "Delete CardInstance",
+        title: "Delete Card Instance",
         cardinstance: cardinstance,
       });
     });
@@ -164,7 +164,7 @@ exports.cardinstance_update_get = function (req, res, next) {
       }
       // Success.
       res.render("cardinstance_form", {
-        title: "Update  CardInstance",
+        title: "Update  Card Instance",
         card_list: results.cards,
         selected_card: results.cardinstance.card._id,
         cardinstance: results.cardinstance,
@@ -198,7 +198,7 @@ exports.cardinstance_update_post = [
         }
         // Successful, so render.
         res.render("cardinstance_form", {
-          title: "Update CardInstance",
+          title: "Update Card Instance",
           card_list: cards,
           selected_card: cardinstance.card._id,
           errors: errors.array(),

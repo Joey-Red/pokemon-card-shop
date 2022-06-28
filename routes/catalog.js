@@ -35,47 +35,35 @@ router.get("/cards", card_controller.card_list);
 
 /// GENRE ROUTES ///
 
-// GET request for creating a Genre. NOTE This must come before route that displays Genre (uses id).
+// GET request for creating a Element Type. NOTE This must come before route that displays Element Type (uses id).
 router.get(
   "/element_type/create",
   element_typeController.element_type_create_get
 );
 
-// POST request for creating Genre.
+// POST request for creating Element Type.
 router.post(
   "/element_type/create",
   element_typeController.element_type_create_post
 );
 
-// GET request to delete Genre.
+// GET request to delete Element Type.
 router.get(
-  "/element_type/:id/delete",
+  "/elementtype/:id/delete",
   element_typeController.element_type_delete_get
 );
 
-// POST request to delete Genre.
+// POST request to delete Element Type.
 router.post(
-  "/element_type/:id/delete",
+  "/elementtype/:id/delete",
   element_typeController.element_type_delete_post
 );
 
-// GET request to update Genre.
-router.get(
-  "/element_type/:id/update",
-  element_typeController.element_type_update_get
-);
+// GET request for one Element Type.
+router.get("/elementtype/:id", element_typeController.element_type_detail);
 
-// POST request to update Genre.
-router.post(
-  "/element_type/:id/update",
-  element_typeController.element_type_update_post
-);
-
-// GET request for one Genre.
-router.get("/element_type/:id", element_typeController.element_type_detail);
-
-// GET request for list of all Genre.
-router.get("/element_types", element_typeController.element_type_list);
+// GET request for list of all Element Type.
+router.get("/elementtypes", element_typeController.element_type_list);
 
 /// CARDINSTANCE ROUTES ///
 

@@ -10,7 +10,10 @@ block content
   p #[strong Status:] 
     if cardinstance.status=='Available'
       span.text-success #{cardinstance.status}
-    else if cardinstance.status=='Maintenance'
+    if cardinstance.status=='Available'
+      p #[strong Price: ]
+        span.text-success $#{cardinstance.card_price}
+    else if cardinstance.status=='SoldOut'
       span.text-danger #{cardinstance.status}
     else
       span.text-warning #{cardinstance.status} 
@@ -18,6 +21,6 @@ block content
 
   hr
   p
-    a(href=cardinstance.url+'/delete') Delete CardInstance
+    a(href=cardinstance.url+'/delete') Delete Card Instance
   p
-    a(href=cardinstance.url+'/update') Update CardInstance
+    a(href=cardinstance.url+'/update') Update Card Instance

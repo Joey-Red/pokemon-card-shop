@@ -8,7 +8,7 @@ var CardInstanceSchema = new Schema({
   status: {
     type: String,
     required: true,
-    enum: ["Available", "Not Available"],
+    enum: ["Available", "SoldOut"],
     default: "Available",
   },
 });

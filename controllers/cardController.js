@@ -34,7 +34,8 @@ exports.index = function (req, res) {
 
 // Display list of all cards.
 exports.card_list = function (req, res, next) {
-  Card.find({}, "card name")
+  Card.find({}, "title")
+    .populate("title")
     .sort({ title: 1 })
     .exec(function (err, list_cards) {
       if (err) {

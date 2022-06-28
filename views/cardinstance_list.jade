@@ -6,10 +6,10 @@ block content
   ul
   each val in cardinstance_list
     li 
-      a(href=val.url) #{val.card.title} : #{val.imprint} - 
+      a(href=val.url) #{val.card.title} : 
       if val.status=='Available'
         span.text-success #{val.status}
-      else if val.status=='Maintenance'
+      else if val.status=='SoldOut'
         span.text-danger #{val.status}
       else
         span.text-warning #{val.status} 

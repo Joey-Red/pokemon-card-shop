@@ -4,10 +4,10 @@ block content
   h1 Title: #{card.title}
   
   p #[strong Summary:] #{card.summary}
-  p #[strong Genre:] 
-    each val, index in card.genre
+  p #[strong Element Type:] 
+    each val, index in card.element_type
       a(href=val.url) #{val.name}
-      if index < card.genre.length - 1
+      if index < card.element_type.length - 1
         |, 
   
   div(style='margin-left:20px;margin-top:20px')
@@ -17,10 +17,8 @@ block content
       hr
       if val.status=='Available'
         p.text-success #{val.status}
-      else if val.status=='Maintenance'
+      else if val.status=='SoldOut'
         p.text-danger #{val.status}
-      else
-        p.text-warning #{val.status} 
       if val.status!='Available'
       p #[strong Id:] 
         a(href=val.url) #{val._id}
