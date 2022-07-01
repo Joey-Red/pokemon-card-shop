@@ -16,7 +16,7 @@ var app = express();
 // Set up mongoose connection
 var mongoose = require("mongoose");
 var dev_db_url =
-  "mongodb+srv://pokemoninventorykeep:gottacatchemall@cluster0.4moc8.mongodb.net/?retryWrites=true&w=majority";
+  "MONGO URL";
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
